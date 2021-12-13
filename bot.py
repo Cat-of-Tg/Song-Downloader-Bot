@@ -43,7 +43,7 @@ db = Database()
 
 START_TEXT = """ `Hai {}, 
 Am a song(Music) Downloader Bot I Can Download Songs From YouTube and Would upload into Telegram. 
-Use /song Command To Download Songs.(eg:-/song Alone) .`
+Use /song Command To Download Songs.(eg:-/song Believer) .`
 """
 
 CMDS_TEXT = """
@@ -63,9 +63,10 @@ CMDS_TEXT = """
 """
 
 ABOUT_TEXT = """
-- **Bot :** `Song Downloader`
+- **Bot :** `Tyra Song Downloader`
 - **Creator :** [MR-JINN-OF-TG](https://Github.com/MR-JINN-OF-TG)
-- **Support :** [CLICK HERE](https://telegram.me/NAZRIYASUPPORT)
+- **Owner :** [POISON](https://cat_of_tg)
+- **Support :** [CLICK HERE](https://telegram.me/TeamLad_Botz)
 - **Source :** [CLICK HERE](https://github.com/MR-JINN-OF-TG/Song-Downloader-Bot)
 - **Language :** [Python3](https://python.org)
 - **Library :** [Pyrogram](https://pyrogram.org)
@@ -164,7 +165,7 @@ def time_to_seconds(time):
 
 
 
-@Bot.on_message(filters.command(['song']))
+@Bot.on_message(filters.command(['song','tyra']))
 def a(client, message):
     query = ''
     for i in message.command[1:]:
@@ -194,7 +195,7 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[@NazriyaSongBot]" 
+            performer = f"[@TyraSongBot]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
@@ -215,7 +216,7 @@ def a(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'❍📖 <b>Title:</b> <a href="{link}">{title}</a>\n❍⌚ <b>Duration:</b> <code>{duration}</code>\n❍📤 <b>Uploaded By:</b> <a href="https://t.me/NazriyaSongBot">NazriyaSongBot</a>'
+        rep = f'❍📖 <b>Title:</b> <a href="{link}">{title}</a>\n❍⌚ <b>Duration:</b> <code>{duration}</code>\n❍📤 <b>Uploaded By:</b> <a href="https://t.me/TyraSongBot">TyraSongBot</a>'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -223,7 +224,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('**Something Went Wrong Report This at @NAZRIYASUPPORT!!**')
+        m.edit('**Something Went Wrong Report This at @TEAMLAD_BOTZ!!**')
         print(e)
     try:
         os.remove(audio_file)
