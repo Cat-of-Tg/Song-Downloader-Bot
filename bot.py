@@ -41,9 +41,14 @@ Bot = Client(
 
 db = Database()
 
-START_TEXT = """ `Hai {}, 
+START_TEXT = """ Hai {}, 
 Am a song(Music) Downloader Bot I Can Download Songs From YouTube and Would upload into Telegram. 
-Use /song Command To Download Songs.(eg:-/song Believer) .`
+Use (/song or /tyra) Command To Download Songs.
+
+eg :- 
+     /song Alone
+       or
+     /tyra Alone
 """
 
 CMDS_TEXT = """
@@ -57,6 +62,11 @@ CMDS_TEXT = """
 
 - /song [song name] or [youTube link]. 
   [/song Alone]. 
+  
+       or 
+  /tyra [song name]
+  [/tyra Alone].
+  
 - /lyrics [song name]. 
   [/lyrics alone] 
 
@@ -206,7 +216,7 @@ def a(client, message):
             return
     except Exception as e:
         m.edit(
-            "**Enter The Song Name with /song command.!**"
+            "**Enter The Song Name with /song or /tyra command.!**"
         )
         print(str(e))
         return
